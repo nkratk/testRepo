@@ -11,4 +11,21 @@ function getRandomNumber(min = 0, max = 100) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-module.exports = { getRandomNumber };
+/**
+ * Generates a random string of specified length.
+ * @param {number} length - The length of the string (default: 10)
+ * @param {string} charset - The characters to use (default: alphanumeric)
+ * @returns {string} A random string
+ */
+function getRandomString(length = 10, charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') {
+  if (length < 0) {
+    throw new Error('length must be non-negative');
+  }
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return result;
+}
+
+module.exports = { getRandomNumber, getRandomString };
